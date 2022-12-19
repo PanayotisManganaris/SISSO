@@ -76,3 +76,25 @@ MATLAB: https://github.com/NREL/SISSORegressor_MATLAB
 Python interface: https://github.com/Matgenix/pysisso  
 
 
+Build
+-----
+
+```
+[panos@ASCALON SISSO]$ cd src
+[panos@ASCALON src]$ source /home/panos/opt/intel/oneapi/mpi/2021.6.0/env/vars.sh
+[panos@ASCALON src]$ source /home/panos/opt/intel/oneapi/compiler/2022.1.0/env/vars.sh
+[panos@ASCALON src]$ make compile
+~/opt/intel/oneapi/mpi/2021.6.0/bin/mpiifort -c var_global.f90 libsisso.f90 DI.f90 FC.f90 SISSO.f90
+[panos@ASCALON src]$ make link
+~/opt/intel/oneapi/mpi/2021.6.0/bin/mpiifort *.o -o SISSO -L~/opt/intel/compiler/2022.1.0/linux/compiler/lib/intel64_lin/
+```
+
+Usage
+-----
+
+```
+cd input_templates
+cp ./train.dat_regression ./train.dat 
+../src/SISSO > log
+```
+
